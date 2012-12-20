@@ -1,0 +1,18 @@
+{
+  "name": "cssify",
+  "version": "0.0.0",
+  "description": "Browserify middleware for adding required styles to the page.",
+  "main": "./lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "keywords": [
+    "browserify",
+    "css",
+    "middleware"
+  ],
+  "browserify": "./lib/cssify-browser.js",
+  "author": "David Guttman",
+  "license": "BSD"
+}
