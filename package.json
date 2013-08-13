@@ -1,6 +1,6 @@
 {
   "name": "cssify",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Browserify middleware for adding required styles to the page.",
   "main": "./lib/index.js",
   "scripts": {
@@ -14,5 +14,8 @@
   ],
   "browserify": "./lib/cssify-browser.js",
   "author": "David Guttman",
-  "license": "BSD"
+  "license": "BSD",
+  "dependencies": {
+    "through": "~2.3.4"
+  }
 }
