@@ -4,7 +4,7 @@
   "description": "Browserify middleware for adding required styles to the page.",
   "main": "./index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node_modules/.bin/mocha"
   },
   "repository": "",
   "keywords": [
@@ -17,5 +17,11 @@
   "license": "BSD",
   "dependencies": {
     "through": "~2.3.4"
+  },
+  "devDependencies": {
+    "concat-stream": "~1.0.1",
+    "mocha": "~1.13.0",
+    "jsdom": "~0.8.5",
+    "browserify": "~2.32.2"
   }
 }
