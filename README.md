@@ -41,6 +41,20 @@ With [npm](https://npmjs.org):
 npm install cssify
 ```
 
+# Bonus
+
+To add a stylesheet from a url:
+
+``` js
+
+var cssify = require('cssify')
+
+cssify.byUrl('//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css')
+
+// Bootstrap styles!
+
+```
+
 # License
 
 BSD
