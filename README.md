@@ -1,6 +1,6 @@
 # cssify #
 
-Simple middleware and method for Browserify to add css styles to the browser.
+A simple Browserify v2 transform for adding required styles to the browser.
 
 # Example
 
@@ -43,4 +43,8 @@ npm install cssify
 
 # License
 
-MIT
+BSD
+
+# Misc
+
+Thanks to substack's insert-css and domenic's simple-jadeify for helping me figure out how to actually test this thing.

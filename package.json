@@ -1,7 +1,7 @@
 {
   "name": "cssify",
   "version": "0.1.1",
-  "description": "Browserify middleware for adding required styles to the page.",
+  "description": "A simple Browserify transform for adding required styles to the browser.",
   "main": "./index.js",
   "scripts": {
     "test": "node_modules/.bin/mocha"
@@ -10,7 +10,9 @@
   "keywords": [
     "browserify",
     "css",
-    "middleware"
+    "transform",
+    "dom",
+    "browser"
   ],
   "browserify": "./browser.js",
   "author": "David Guttman",
