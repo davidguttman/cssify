@@ -14,7 +14,7 @@ module.exports = function (fileName) {
             inputString += chunk;
         },
         function () {
-            var css = inputString.replace(/\"/g, "\\\"").replace(/\n/g, "\\\n");
+            var css = inputString.replace(/\'/g, "\\\'").replace(/\"/g, "\\\"").replace(/\n/g, "\\\n");
 
             var moduleBody = "var css = '" + css + "'; (require("+JSON.stringify(__dirname)+"))(css); module.exports = css;";
 
