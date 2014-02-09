@@ -11,6 +11,7 @@
     "browserify",
     "css",
     "transform",
+    "browserify-transform",
     "dom",
     "browser"
   ],
