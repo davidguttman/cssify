@@ -25,6 +25,6 @@
     "concat-stream": "~1.0.1",
     "mocha": "~1.13.0",
     "jsdom": "~0.8.5",
-    "browserify": "~2.32.2"
+    "browserify": "~3.32.1"
   }
 }
