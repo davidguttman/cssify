@@ -2,7 +2,13 @@
 
 var through = require("through");
 
-module.exports = function (fileName) {
+module.exports = function (fileName, options) {
+
+    options = options || {};
+    if (typeof(options['auto-inject']) == 'undefined') {
+        options['auto-inject'] = true;
+    }
+
     if (!/\.css$/i.test(fileName)) {
         return through();
     }
@@ -16,7 +22,9 @@ module.exports = function (fileName) {
         function () {
             var stringifiedCss = JSON.stringify(inputString);
 
-            var moduleBody = "var css = " + stringifiedCss + "; (require("+JSON.stringify(__dirname)+"))(css); module.exports = css;";
+            var moduleBody = options['auto-inject']
+              ? "var css = " + stringifiedCss + "; (require("+JSON.stringify(__dirname)+"))(css); module.exports = css;"
+              : "module.exports = " + stringifiedCss;
 
             this.queue(moduleBody);
             this.queue(null);
