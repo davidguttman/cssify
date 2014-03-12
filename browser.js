@@ -1,16 +1,17 @@
-module.exports = function (css) {
-  if (document.createStyleSheet) {
-    document.createStyleSheet(css);
+module.exports = function (css, customDocument) {
+  var doc = customDocument || document;
+  if (doc.createStyleSheet) {
+    doc.createStyleSheet(css);
   } else {
-    var head = document.getElementsByTagName('head')[0],
-        style = document.createElement('style');
+    var head = doc.getElementsByTagName('head')[0],
+        style = doc.createElement('style');
 
     style.type = 'text/css';
   
     if (style.styleSheet) {
       style.styleSheet.cssText = css;
     } else {
-      style.appendChild(document.createTextNode(css));
+      style.appendChild(doc.createTextNode(css));
     }
     
     head.appendChild(style); 
