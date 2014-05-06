@@ -1,7 +1,7 @@
 module.exports = function (css, customDocument) {
   var doc = customDocument || document;
   if (doc.createStyleSheet) {
-    doc.createStyleSheet(css);
+    doc.createStyleSheet().cssText = css;
   } else {
     var head = doc.getElementsByTagName('head')[0],
         style = doc.createElement('style');
