@@ -15,7 +15,7 @@ body {
 
 entry.js:
 ``` js
-require('./style.css');
+var styleNode = require('./style.css');
 
 console.log('The background is pink!')
 ```
