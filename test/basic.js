@@ -126,6 +126,31 @@ specify("It adds styles into an iframe", function (done) {
   }));
 });
 
+specify("It returns the stylesheet element", function (done) {
+
+  var bundleStream = browserify()
+    .transform(cssify)
+    .add(fixturePath("entry.js"))
+    .require('..', {expose: 'cssify'})
+    .require(fixturePath('style.css'), {expose: 'mycss'})
+    .bundle();
+
+  bundleStream.pipe(concatStream(function (bundleJs) {
+
+    var window = jsdom(pageHtml).createWindow();
+
+    var scriptEl = window.document.createElement("script");
+    scriptEl.textContent = bundleJs;
+    window.document.head.appendChild(scriptEl);
+
+    var el = window.require('cssify')(window.require('mycss'));
+    assert.equal(el.nodeName, 'STYLE', 'style')
+
+    done();
+
+  }));
+});
+
 function fixturePath(fileName) {
   return path.resolve(__dirname, "fixtures/basic", fileName);
 }
