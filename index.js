@@ -23,7 +23,7 @@ module.exports = function (fileName, options) {
             var stringifiedCss = JSON.stringify(inputString);
 
             var moduleBody = options['auto-inject']
-              ? "var css = " + stringifiedCss + "; (require("+JSON.stringify(__dirname)+"))(css); module.exports = css;"
+              ? "var css = " + stringifiedCss + "; (require('cssify'))(css); module.exports = css;"
               : "module.exports = " + stringifiedCss;
 
             this.queue(moduleBody);
