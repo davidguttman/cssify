@@ -1,5 +1,6 @@
 "use strict";
 
+var path = require('path')
 var through = require("through");
 
 module.exports = function (fileName, options) {
@@ -21,9 +22,9 @@ module.exports = function (fileName, options) {
         },
         function () {
             var stringifiedCss = JSON.stringify(inputString);
-
+            var requirePath = path.relative(path.dirname(fileName), __dirname)
             var moduleBody = options['auto-inject']
-              ? "var css = " + stringifiedCss + "; (require("+JSON.stringify(__dirname)+"))(css); module.exports = css;"
+              ? "var css = " + stringifiedCss + "; (require("+JSON.stringify('./'+requirePath)+"))(css); module.exports = css;"
               : "module.exports = " + stringifiedCss;
 
             this.queue(moduleBody);
