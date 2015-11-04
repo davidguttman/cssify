@@ -1,23 +1,34 @@
-module.exports = function (css, customDocument) {
+function injectStyleTag(document, fileName, cb) {
+  var style = document.getElementById(fileName);
+
+  if (style) {
+    cb(style);
+  } else {
+    var head = document.getElementsByTagName('head')[0];
+
+    style = document.createElement('style');
+    style.id = fileName;
+    cb(style);
+    head.appendChild(style);
+  }
+
+  return style;
+}
+
+module.exports = function (css, customDocument, fileName) {
   var doc = customDocument || document;
   if (doc.createStyleSheet) {
     var sheet = doc.createStyleSheet()
     sheet.cssText = css;
     return sheet.ownerNode;
   } else {
-    var head = doc.getElementsByTagName('head')[0],
-        style = doc.createElement('style');
-
-    style.type = 'text/css';
-
-    if (style.styleSheet) {
-      style.styleSheet.cssText = css;
-    } else {
-      style.appendChild(doc.createTextNode(css));
-    }
-
-    head.appendChild(style);
-    return style;
+    return injectStyleTag(doc, fileName, function(style) {
+      if (style.styleSheet) {
+        style.styleSheet.cssText = css;
+      } else {
+        style.innerHTML = css;
+      }
+    });
   }
 };
 

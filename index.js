@@ -24,7 +24,7 @@ module.exports = function (fileName, options) {
             var stringifiedCss = JSON.stringify(inputString);
             var requirePath = path.relative(path.dirname(fileName), __dirname)
             var moduleBody = options['auto-inject']
-              ? "var css = " + stringifiedCss + "; (require("+JSON.stringify('./'+requirePath)+"))(css); module.exports = css;"
+              ? "var css = " + stringifiedCss + "; (require("+JSON.stringify('./'+requirePath)+"))(css, undefined, '" + fileName + "'); module.exports = css;"
               : "module.exports = " + stringifiedCss;
 
             this.queue(moduleBody);
