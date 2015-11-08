@@ -1,3 +1,4 @@
+/* eslint-env browser, commonjs */
 function injectStyleTag(document, fileName, cb) {
   var style = document.getElementById(fileName);
 
@@ -18,11 +19,11 @@ function injectStyleTag(document, fileName, cb) {
 module.exports = function (css, customDocument, fileName) {
   var doc = customDocument || document;
   if (doc.createStyleSheet) {
-    var sheet = doc.createStyleSheet()
+    var sheet = doc.createStyleSheet();
     sheet.cssText = css;
     return sheet.ownerNode;
   } else {
-    return injectStyleTag(doc, fileName, function(style) {
+    return injectStyleTag(doc, fileName, function (style) {
       if (style.styleSheet) {
         style.styleSheet.cssText = css;
       } else {
@@ -32,12 +33,12 @@ module.exports = function (css, customDocument, fileName) {
   }
 };
 
-module.exports.byUrl = function(url) {
+module.exports.byUrl = function (url) {
   if (document.createStyleSheet) {
     return document.createStyleSheet(url).ownerNode;
   } else {
-    var head = document.getElementsByTagName('head')[0],
-        link = document.createElement('link');
+    var head = document.getElementsByTagName('head')[0];
+    var link = document.createElement('link');
 
     link.rel = 'stylesheet';
     link.href = url;
