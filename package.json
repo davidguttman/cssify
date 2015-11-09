@@ -4,6 +4,7 @@
   "description": "A simple Browserify transform for adding required styles to the browser.",
   "main": "./index.js",
   "scripts": {
+    "pretest": "standard",
     "test": "node_modules/.bin/mocha"
   },
   "repository": "https://github.com/davidguttman/cssify",
@@ -22,9 +23,10 @@
     "through": "~2.3.4"
   },
   "devDependencies": {
+    "browserify": "~3.32.1",
     "concat-stream": "~1.0.1",
-    "mocha": "~1.13.0",
     "jsdom": "~0.8.5",
-    "browserify": "~3.32.1"
+    "mocha": "~1.13.0",
+    "standard": "^5.3.1"
   }
 }
