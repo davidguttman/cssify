@@ -2,10 +2,12 @@
   "name": "cssify",
   "version": "0.8.0",
   "description": "A simple Browserify transform for adding required styles to the browser.",
-  "main": "./index.js",
+  "main": "./lib/index.js",
   "scripts": {
     "pretest": "standard",
-    "test": "node_modules/.bin/mocha"
+    "test:browser": "browserify -t . -t browserify-istanbul test/browser | browser-run | node test/extract-coverage.js | tap-difflet",
+    "test:node": "istanbul cover --report json --print none ./node_modules/.bin/tape 'test/**/*.spec.js' | tap-difflet",
+    "test": "mkdir -p coverage && npm run test:node && npm run test:browser && istanbul report"
   },
   "repository": "https://github.com/davidguttman/cssify",
   "keywords": [
@@ -16,17 +18,24 @@
     "dom",
     "browser"
   ],
-  "browserify": "./browser.js",
+  "browserify": "./lib/browser.js",
   "author": "David Guttman",
   "license": "BSD",
+  "engines" : {
+    "node" : ">= 4.0.0"
+  },
   "dependencies": {
     "through": "~2.3.4"
   },
   "devDependencies": {
+    "browser-run": "^3.0.3",
     "browserify": "~3.32.1",
-    "concat-stream": "~1.0.1",
-    "jsdom": "~0.8.5",
-    "mocha": "~1.13.0",
-    "standard": "^5.3.1"
+    "browserify-istanbul": "^0.2.1",
+    "concat-stream": "^1.5.1",
+    "istanbul": "^0.4.0",
+    "standard": "^5.3.1",
+    "tap-difflet": "^0.4.0",
+    "tape": "^4.2.2",
+    "tape-catch": "^1.0.4"
   }
 }
