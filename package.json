@@ -21,6 +21,9 @@
   "browserify": "./lib/browser.js",
   "author": "David Guttman",
   "license": "BSD",
+  "engines" : {
+    "node" : ">= 4.0.0"
+  },
   "dependencies": {
     "through": "~2.3.4"
   },
