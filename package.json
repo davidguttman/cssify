@@ -21,11 +21,15 @@
   "browserify": "./lib/browser.js",
   "author": "David Guttman",
   "license": "BSD",
-  "engines" : {
-    "node" : ">= 4.0.0"
+  "engines": {
+    "node": ">= 4.0.0"
   },
   "dependencies": {
-    "through": "~2.3.4"
+    "css-modules-loader-core": "^1.0.0",
+    "resolve": "^1.1.6",
+    "string-hash": "^1.1.0",
+    "stringify-object": "^2.3.1",
+    "through2": "^2.0.0"
   },
   "devDependencies": {
     "browser-run": "^3.0.3",
