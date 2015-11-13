@@ -29,7 +29,7 @@
     "resolve": "^1.1.6",
     "string-hash": "^1.1.0",
     "stringify-object": "^2.3.1",
-    "through": "~2.3.4"
+    "through2": "^2.0.0"
   },
   "devDependencies": {
     "browser-run": "^3.0.3",
