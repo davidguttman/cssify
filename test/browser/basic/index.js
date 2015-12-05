@@ -26,6 +26,24 @@ test('browser: basic usage', function (t) {
     'styles injected'
   )
 
+  injectCss('body { width: 300px; }')
+  injectCss('body { font-size: 5px; }')
+
+  const computedStyle = window.getComputedStyle(document.body)
+
+  const actualStyles = {
+    position: computedStyle.position,
+    width: computedStyle.width,
+    fontSize: computedStyle.fontSize
+  }
+
+  const expectedStyles = {
+    position: 'absolute',
+    width: '300px',
+    fontSize: '5px'
+  }
+
+  t.deepEqual(actualStyles, expectedStyles, 'inject styles without an id')
   t.end()
 })
 
