@@ -7,9 +7,9 @@ var skipIt = options.skipIt
 var stringToRegExp = options.stringToRegExp
 
 test('options.normalize', function (t) {
-  t.equal(
-    JSON.stringify(normalize()),
-    JSON.stringify({ 'auto-inject': true, test: /\.css$/i }),
+  t.deepEqual(
+    normalize(),
+    { 'auto-inject': true, test: /\.css$/i },
     'falls back to defaults'
   )
 
@@ -31,6 +31,12 @@ test('options.normalize', function (t) {
     normalize({ test: testObj }).test,
     testObj,
     'non-string value for test option is passed as is'
+  )
+
+  t.deepEqual(
+    normalize({ 'no-auto-inject': true }),
+    { 'auto-inject': false, test: /\.css$/i },
+    'no-auto-inject option'
   )
 
   t.end()
