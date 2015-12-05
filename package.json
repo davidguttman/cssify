@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "scripts": {
     "pretest": "standard",
-    "test:browser": "browserify -t . -t browserify-istanbul test/browser | browser-run | node test/extract-coverage.js | tap-difflet",
+    "test:browser": "browserify -t [ . --no-auto-inject ] -t browserify-istanbul test/browser | browser-run | node test/extract-coverage.js | tap-difflet",
     "test:node": "istanbul cover --report json --print none ./node_modules/.bin/tape 'test/**/*.spec.js' | tap-difflet",
     "test": "mkdir -p coverage && npm run test:node && npm run test:browser && istanbul report"
   },
