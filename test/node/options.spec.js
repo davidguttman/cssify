@@ -7,9 +7,9 @@ var skipIt = options.skipIt
 var stringToRegExp = options.stringToRegExp
 
 test('options.normalize', function (t) {
-  t.equal(
-    JSON.stringify(normalize()),
-    JSON.stringify({ 'auto-inject': true, test: /\.css$/i }),
+  t.deepEqual(
+    normalize(),
+    { 'auto-inject': true, test: /\.css$/i },
     'falls back to defaults'
   )
 
