@@ -33,6 +33,12 @@ test('options.normalize', function (t) {
     'non-string value for test option is passed as is'
   )
 
+  t.deepEqual(
+    normalize({ 'no-auto-inject': true }),
+    { 'auto-inject': false, test: /\.css$/i },
+    'no-auto-inject option'
+  )
+
   t.end()
 })
 
