@@ -1,17 +1,19 @@
-const fs = require('fs')
-const path = require('path')
-const concatStream = require('concat-stream')
+'use strict'
 
-const covPath = path.join(__dirname, '..', 'coverage', 'coverage-browser.json')
+var fs = require('fs')
+var path = require('path')
+var concatStream = require('concat-stream')
 
-process.stdin.pipe(concatStream(input => {
+var covPath = path.join(__dirname, '..', 'coverage', 'coverage-browser.json')
+
+process.stdin.pipe(concatStream(function (input) {
   input = input.toString('utf-8')
-  const sp = input.split('# coverage: ')
-  const output = sp[0]
-  const coverage = sp[1]
+  var sp = input.split('# coverage: ')
+  var output = sp[0]
+  var coverage = sp[1]
   console.log(output)
 
-  fs.writeFile(covPath, coverage, err => {
+  fs.writeFile(covPath, coverage, function (err) {
     if (err) console.error(err)
   })
 }))

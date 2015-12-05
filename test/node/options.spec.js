@@ -1,12 +1,12 @@
 'use strict'
 
-const test = require('tape-catch')
-const options = require('../../lib/options')
-const normalize = options.normalize
-const skipIt = options.skipIt
-const stringToRegExp = options.stringToRegExp
+var test = require('tape-catch')
+var options = require('../../lib/options')
+var normalize = options.normalize
+var skipIt = options.skipIt
+var stringToRegExp = options.stringToRegExp
 
-test('options.normalize', t => {
+test('options.normalize', function (t) {
   t.equal(
     JSON.stringify(normalize()),
     JSON.stringify({ 'auto-inject': true, test: /\.css$/i }),
@@ -25,7 +25,7 @@ test('options.normalize', t => {
     'regular expression string is parsed for test option'
   )
 
-  const testObj = {}
+  var testObj = {}
 
   t.equal(
     normalize({ test: testObj }).test,
@@ -36,17 +36,17 @@ test('options.normalize', t => {
   t.end()
 })
 
-test('options.skipIt', t => {
+test('options.skipIt', function (t) {
   t.equal(skipIt('', {}), false, 'nothing to match')
 
   t.equal(
-    skipIt('./style\.css', { test: () => false }),
+    skipIt('./style\.css', { test: function () { return false } }),
     true,
     'function returning false'
   )
 
   t.equal(
-    skipIt('./style\.css', { test: () => true }),
+    skipIt('./style\.css', { test: function () { return true } }),
     false,
     'function returning true'
   )
@@ -66,9 +66,9 @@ test('options.skipIt', t => {
   t.end()
 })
 
-test('options.stringToRegExp', t => {
-  const reSource = '/str/'
-  const re = stringToRegExp(reSource)
+test('options.stringToRegExp', function (t) {
+  var reSource = '/str/'
+  var re = stringToRegExp(reSource)
 
   t.equal(re instanceof RegExp, true, 'RegExp is instantiated')
 

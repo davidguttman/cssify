@@ -22,10 +22,11 @@
   "author": "David Guttman",
   "license": "BSD",
   "engines": {
-    "node": ">= 4.0.0"
+    "node": ">= 0.12.0"
   },
   "dependencies": {
     "css-modules-loader-core": "^1.0.0",
+    "lodash.assign": "^3.2.0",
     "resolve": "^1.1.6",
     "string-hash": "^1.1.0",
     "stringify-object": "^2.3.1",
