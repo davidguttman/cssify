@@ -34,7 +34,7 @@ test('processCss', function (t) {
     .then(function (moduleSource) {
       t.equal(
         moduleSource, [
-          'var inject = require(\'.\');',
+          'var inject = require(\'./\');',
           'var css = "' + escapedCss + '";',
           'inject(css, undefined, \'' + hashedFilename + '\');',
           'module.exports = css;'
@@ -61,7 +61,7 @@ test('processCss', function (t) {
     .then(function (moduleSource) {
       t.equal(
         moduleSource, [
-          'var inject = require(\'.\');',
+          'var inject = require(\'./\');',
           'var css = "' + prodCss + '";',
           'inject(css, undefined, \'' + hashedFilename + '\');',
           'module.exports = ' + prodMap + ';'
